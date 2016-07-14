@@ -1,1 +1,39 @@
-Hello World
+<html>
+	<head>
+		<title>GZ Time Logs</title>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.js"></script>
+	</head>
+	<body>
+		<div style="margin: 0 auto;width: 50%;text-align: center;height:100%">
+			<p style="margin: 0;position: absolute;top: 43%;left: 50%;transform: translate(-50%, -50%);">
+				You came into the office at: <br/>
+				<span class="timein" style="color:blue">---</span><br/><br/>
+				You can leave the office by: <br/>
+				<span class="timeout" style="color:red">---</span>
+			</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$.get( 'http://10.1.2.42:8080/attlogs/14035', function( data ) {
+			var Timezone   = new Date().getTimezoneOffset() / 60;
+			var LocaleTime = new Date(new Date().getTime() + Timezone * 60000 + (3600000 * 8)).toISOString();
+			var current    = [];
+
+			data = data || [];
+
+			data.forEach( function ( t ) {
+				if (t.Checktime.split('T')[0] === LocaleTime.split('T')[0]) {
+					return current.push(t.Checktime);
+				}
+			} );
+
+			var TimeIn  = current[ 0 ];
+			var TimeOut = new Date( TimeIn ).setHours( new Date( TimeIn ).getHours() - Math.abs( Timezone ) + 9);
+
+			$( '.timein' ).html( moment( new Date( TimeIn ).setHours( new Date( TimeIn ).getHours() - Math.abs( Timezone ) ) ).format( 'LLLL' ) );
+
+			$( '.timeout' ).html( moment( TimeOut ).format( 'LLLL' ) )
+		} );
+	</script>
+</html>
