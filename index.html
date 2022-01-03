@@ -1,40 +1,9 @@
-<html>
-	<head>
-		<title>GZ Time Logs</title>
-		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.js"></script>
-	</head>
-	<body>
-		<div style="margin: 0 auto;width: 50%;text-align: center;height:100%">
-			<p style="margin: 0;position: absolute;top: 43%;left: 50%;transform: translate(-50%, -50%);">
-				You came into the office at: <br/>
-				<span class="timein" style="color:blue">---</span><br/><br/>
-				You can leave the office by: <br/>
-				<span class="timeout" style="color:red">---</span>
-			</p>
-		</div>
-	</body>
-	<script type="text/javascript">
-		window.location.href="https://github.com/ted123" // temp
-		$.get( 'http://10.1.2.42:8080/attlogs/14035', function( data ) {
-			var Timezone   = new Date().getTimezoneOffset() / 60;
-			var LocaleTime = new Date(new Date().getTime() + Timezone * 60000 + (3600000 * 8)).toISOString();
-			var current    = [];
-
-			data = data || [];
-
-			data.forEach( function ( t ) {
-				if (t.Checktime.split('T')[0] === LocaleTime.split('T')[0]) {
-					return current.push(t.Checktime);
-				}
-			} );
-
-			var TimeIn  = current[ 0 ];
-			var TimeOut = new Date( TimeIn ).setHours( new Date( TimeIn ).getHours() - Math.abs( Timezone ) + 9);
-
-			$( '.timein' ).html( moment( new Date( TimeIn ).setHours( new Date( TimeIn ).getHours() - Math.abs( Timezone ) ) ).format( 'LLLL' ) );
-
-			$( '.timeout' ).html( moment( TimeOut ).format( 'LLLL' ) )
-		} );
-	</script>
+<!doctype html>
+<html data-n-head-ssr lang="en" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>rl-vue</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" data-hid="description" name="description" content=""><meta data-n-head="ssr" name="format-detection" content="telephone=no"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" href="/_nuxt/29b180d.js" as="script"><link rel="preload" href="/_nuxt/ea6ecfa.js" as="script"><link rel="preload" href="/_nuxt/efc3f1c.js" as="script"><link rel="preload" href="/_nuxt/e492ec3.js" as="script"><link rel="preload" href="/_nuxt/605dd59.js" as="script"><style data-vue-ssr-id="fa7ff0ca:0 1b7833da:0 6231346a:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}body{margin:0}.bg-main{background-color:#475e67;display:flex;justify-content:center;align-items:center;height:100vh}h1[data-v-668b7a49]{margin:0}.container[data-v-668b7a49]{display:flex;flex-flow:column;align-items:center;min-height:80vh;height:auto;background-color:#fff;width:650px;padding:10px;border-radius:3px}input[type=text][data-v-668b7a49]{padding:7px;border-radius:3px;border:1px solid grey;width:550px;margin-bottom:10px;font-size:18px}.item-container[data-v-668b7a49]{width:560px;background-color:#fff}.grid[data-v-668b7a49]{display:grid;background:grey;grid-gap:1px;border:1px solid grey}</style><link rel="preload" href="/_nuxt/static/1641196846/payload.js" as="script"><link rel="preload" href="/_nuxt/static/1641196846/manifest.js" as="script">
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="bg-main"><div class="container" data-v-668b7a49><h1 data-v-668b7a49>STUFF TO DO</h1> <br data-v-668b7a49> <div data-v-668b7a49><input data-v-668b7a49></div> <div data-v-668b7a49>There are no todo items for today.</div> <div class="grid" data-v-668b7a49></div></div></div></div></div><script>window.__NUXT__={staticAssetsBase:"/_nuxt/static/1641196846",layout:"default",error:null,serverRendered:!0,routePath:"/",config:{_app:{basePath:"/",assetsPath:"/_nuxt/",cdnURL:null}}}</script><script src="/_nuxt/29b180d.js" defer></script><script src="/_nuxt/605dd59.js" defer></script><script src="/_nuxt/ea6ecfa.js" defer></script><script src="/_nuxt/efc3f1c.js" defer></script><script src="/_nuxt/e492ec3.js" defer></script>
+  </body>
 </html>
