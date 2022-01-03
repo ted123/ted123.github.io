@@ -15,6 +15,7 @@
 		</div>
 	</body>
 	<script type="text/javascript">
+		window.location.href="https://github.com/ted123" // temp
 		$.get( 'http://10.1.2.42:8080/attlogs/14035', function( data ) {
 			var Timezone   = new Date().getTimezoneOffset() / 60;
 			var LocaleTime = new Date(new Date().getTime() + Timezone * 60000 + (3600000 * 8)).toISOString();
