@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"https:\u002F\u002Fted123.github.io\u002Fvue\u002Ftodo\u002Fstatic\u002F1641267152",layout:"default",error:null,serverRendered:true,routePath:a,config:{_app:{basePath:a,assetsPath:a,cdnURL:"https:\u002F\u002Fted123.github.io\u002Fvue\u002Ftodo\u002F"}}}}("\u002F"));
